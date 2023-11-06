@@ -140,9 +140,23 @@ public class PokerHandTest {
     }
 
     @Test
+    public void isNotValidPokerHandOfCharOfSuitNotEN() {
+        RuntimeException thrownWrongCardCharOfSuit = Assert.assertThrows(RuntimeException.class,
+                () -> new PokerHand("JS JE 3D JН JH"));
+        Assert.assertEquals("WRONG SUIT",thrownWrongCardCharOfSuit.getMessage());
+    }
+
+    @Test
     public void isNotValidPokerHandOfCharOfRank() {
         RuntimeException thrownWrongCardCharOfRank = Assert.assertThrows(RuntimeException.class,
                 () -> new PokerHand("JS 1D 3D JH JH"));
+        Assert.assertEquals("WRONG RANK",thrownWrongCardCharOfRank.getMessage());
+    }
+
+    @Test
+    public void isNotValidPokerHandOfCharOfRankNotEN() {
+        RuntimeException thrownWrongCardCharOfRank = Assert.assertThrows(RuntimeException.class,
+                () -> new PokerHand("JS АD 3D JH КH"));
         Assert.assertEquals("WRONG RANK",thrownWrongCardCharOfRank.getMessage());
     }
     
